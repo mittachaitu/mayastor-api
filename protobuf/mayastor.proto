@@ -155,6 +155,7 @@ message CreateReplicaRequest {
   bool thin = 4;    // thin provisioning
   ShareProtocolReplica share = 5;  // protocol to expose the replica over
   repeated string allowed_hosts = 6; // host (nqn's) which are allowed to connect to the target.
+  PoolType pool_type = 7; // type of the pool to provision replicas
 }
 
 message CreateReplicaRequestV2 {
@@ -165,6 +166,7 @@ message CreateReplicaRequestV2 {
   bool thin = 5;    // thin provisioning
   ShareProtocolReplica share = 6;  // protocol to expose the replica over
   repeated string allowed_hosts = 7; // host (nqn's) which are allowed to connect to the target.
+  PoolType pool_type = 8; // type of the pool to provision replicas
 }
 
 // Destroy replica arguments.
@@ -688,4 +690,9 @@ message JsonRpcRequest {
 
 message JsonRpcReply {
     string result = 1;
+}
+
+enum PoolType {
+        Lvs = 0;
+        Xfs = 1;
 }
